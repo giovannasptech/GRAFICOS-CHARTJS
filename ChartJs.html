@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o ChartJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body style="display:flex;">
+    <div>
+        <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw;"></canvas> 
+    </div>
+    <div>
+        <canvas id="myChart2" style="position: relative; height: 40vh; width: 40vw;"></canvas> 
+    </div>
+</body>
+</html>
+
+<script>
+    const labels = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+
+    // Conjunto de dados para temperatura e umidade
+    const Temperatura = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Temperatura (°C)',
+                backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                borderColor: 'rgb(255, 5, 8)',
+                data: [30, 29, 28, 25, 22, 23, 22, 24, 27, 25, 26, 28],
+                fill: false
+            },
+            {
+                label: 'Umidade (%)',
+                backgroundColor: 'rgba(0, 0, 255, 0.5)',
+                borderColor: 'rgb(0, 99, 132)',
+                data: [81, 82, 84, 82, 81, 85, 87, 80, 83, 82, 81, 80],
+                fill: false
+            }
+        ]
+    };
+
+    // Configuração para o gráfico de linha
+    const configLine = {
+        type: 'line',
+        data: Temperatura,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    };
+
+    // Configuração para o gráfico de barras
+    const configBar = {
+        type: 'bar',
+        data: Temperatura,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    };
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        configLine
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        configBar
+    );
+</script>
